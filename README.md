@@ -271,3 +271,6 @@ end
 You can add your custom logic before and after the `@task.destroy` call and handle success and failure cases.
 
 Customizing CRUD operations is a fundamental part of Rails development, and you can tailor these actions to fit your application's specific requirements.
+
+"Congratulations! You've completed this introductory Ruby on Rails tutorial. You now have the skills to create web applications, customize CRUD operations, and explore more advanced features. Keep coding, experimenting, and building, as practice is the key to mastering Ruby on Rails. Happy coding!"
+
