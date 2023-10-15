@@ -89,9 +89,7 @@ Open your web browser and navigate to `http://localhost:3000/welcome/index`. You
 
 This is a simplified introduction to Ruby on Rails. To build more complex applications, you'll need to explore topics like models, databases, authentication, and deployment. The official Ruby on Rails guides and documentation are excellent resources to continue your learning journey.
 
-# Design Web Service with Ruby on Rails
-
-**Building a RESTful Web Service with Ruby on Rails**
+# Building a RESTful Web Service with Ruby on Rails
 
 **Step 1: Create a New Rails Application**
 
@@ -157,3 +155,104 @@ You can extend your web service by adding features like authentication, versioni
 This tutorial provides a simple introduction to creating a web service with Ruby on Rails. Depending on your project's requirements, you can add more features, secure your API, and optimize its performance.
 
 For more comprehensive web service development, consider exploring gems like `devise` for authentication, `versionist` for versioning, and `jbuilder` for JSON rendering.
+
+# Customizing CRUD Operations in Ruby on Rails
+
+To add custom logic to the CRUD (Create, Read, Update, Delete) operations in a Ruby on Rails application, you can work within the controller actions or use callbacks and filters to customize the behavior of your application. Here's a general guide on how to add custom logic to each CRUD operation:
+
+**1. Create (Custom Logic for Create Operation):**
+
+To add custom logic to the creation of a resource, you can override the `create` action in the corresponding controller. For example, if you have a `Task` model, you can customize the `create` action in the `TasksController`. Here's an example:
+
+```ruby
+# app/controllers/tasks_controller.rb
+
+def create
+  @task = Task.new(task_params)
+
+  # Your custom logic here
+  if @task.save
+    # Custom logic for a successful creation
+    render json: @task, status: :created
+  else
+    # Custom logic for a failed creation
+    render json: @task.errors, status: :unprocessable_entity
+  end
+end
+```
+
+In the above code, you can insert your custom logic before and after the `@task.save` call. You can handle success and failure cases as needed.
+
+**2. Read (Custom Logic for Read Operation):**
+
+To add custom logic to the reading of a resource, you can customize the `show` or `index` actions in the controller. For example:
+
+```ruby
+# app/controllers/tasks_controller.rb
+
+def show
+  @task = Task.find(params[:id])
+
+  # Your custom logic here
+
+  render json: @task
+end
+
+def index
+  @tasks = Task.all
+
+  # Your custom logic here
+
+  render json: @tasks
+end
+```
+
+You can insert your custom logic before rendering the resource in the `show` and `index` actions.
+
+**3. Update (Custom Logic for Update Operation):**
+
+For custom logic during updates, you can override the `update` action. Here's an example:
+
+```ruby
+# app/controllers/tasks_controller.rb
+
+def update
+  @task = Task.find(params[:id])
+
+  # Your custom logic here
+  if @task.update(task_params)
+    # Custom logic for a successful update
+    render json: @task
+  else
+    # Custom logic for a failed update
+    render json: @task.errors, status: :unprocessable_entity
+  end
+end
+```
+
+You can add your custom logic before and after the `@task.update` call and handle success and failure cases accordingly.
+
+**4. Delete (Custom Logic for Delete Operation):**
+
+For custom logic during the deletion of a resource, override the `destroy` action:
+
+```ruby
+# app/controllers/tasks_controller.rb
+
+def destroy
+  @task = Task.find(params[:id])
+
+  # Your custom logic here
+  if @task.destroy
+    # Custom logic for a successful deletion
+    head :no_content
+  else
+    # Custom logic for a failed deletion
+    render json: @task.errors, status: :unprocessable_entity
+  end
+end
+```
+
+You can add your custom logic before and after the `@task.destroy` call and handle success and failure cases.
+
+Customizing CRUD operations is a fundamental part of Rails development, and you can tailor these actions to fit your application's specific requirements.
