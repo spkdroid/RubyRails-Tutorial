@@ -1,3 +1,18 @@
+<h1 align="center">Getting Started with Ruby on Rails: A Beginner's Guide</h1>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+</p>
+
+<p align="center">  
+Ruby on Rails, often called Rails, is a powerful open-source web application framework designed for rapid development. <br>
+</p>
+</br>
+
+<p align="center">
+<img src="/Ruby_on_Rails.png" height=225 width=250/>
+</p>
+
 # Ruby Rails Tutorial
 
 **Getting Started with Ruby on Rails**
